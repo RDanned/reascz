@@ -1,0 +1,19 @@
+.map-select {
+  .district-select {
+    width: 450px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0 auto;
+
+    .ant-radio-wrapper {
+      display: flex;
+      align-items: flex-start;
+
+      .ant-radio {
+        align-self: self-start;
+        margin-block-start: 0.25rem;
+      }
+    }
+  }
+}

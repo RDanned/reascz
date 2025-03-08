@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  # 1. MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: reascz-prod-mongo
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: reascz
+    ports:
+      - "27017:27017"
+
+  # 2. Node.js Backend
+  backend:
+    build: ./backend
+    container_name: reascz-prod-backend
+    env_file:
+      - backend/.env.dev
+    environment:
+      MONGO_URI: ${MONGO_URI:-mongodb://mongo:27017/reascz}
+    depends_on:
+      - mongo
+    ports:
+      - "4000:4000"
+
+  # 3. Nginx serving React build & proxying to backend
+  nginx:
+    container_name: reascz-prod-nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  mongo-data:

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    ports:
+      - ${BACKEND_PORT:-4000}:4000
+    env_file:
+      - backend/.env.prod
+    environment:
+      MONGO_URI: "mongodb://mongo:27017/reascz"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    ports:
+      - ${FRONTEND_PORT:-5173}:5173
+    env_file:
+      - ./frontend/.env
+
+volumes:
+  mongo-data:
