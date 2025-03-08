@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { createRootRoute, Link, Outlet, useNavigate } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { createRootRoute, Link, Outlet, useNavigate } from '@tanstack/react-router';
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -15,7 +14,6 @@ function RootComponent() {
   return (
     <div>
       <Outlet />
-      <TanStackRouterDevtools />
     </div>
   );
 }

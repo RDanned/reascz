@@ -13,7 +13,7 @@ services:
     ports:
       - ${BACKEND_PORT:-4000}:4000
     env_file:
-      - backend/.env.prod
+      - backend/.env.production
     environment:
       MONGO_URI: "mongodb://mongo:27017/reascz"
     depends_on:
@@ -24,7 +24,7 @@ services:
     ports:
       - ${FRONTEND_PORT:-5173}:5173
     env_file:
-      - ./frontend/.env
+      - ./frontend/.env.development
 
 volumes:
   mongo-data:

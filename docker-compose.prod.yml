@@ -17,7 +17,7 @@ services:
     build: ./backend
     container_name: reascz-prod-backend
     env_file:
-      - backend/.env.dev
+      - backend/.env.development
     environment:
       MONGO_URI: ${MONGO_URI:-mongodb://mongo:27017/reascz}
     depends_on:
