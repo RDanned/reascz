@@ -1,5 +1,8 @@
 # Lead form simple app
 
+## Deployed project url:
+http://46.101.214.164/chci-nabidku
+
 ## How to run
 ### 1. Docker, on local machine
 1. Clone the repository
